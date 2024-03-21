@@ -12,9 +12,9 @@ public class Villager : MonoBehaviour
     bool isSelected;
     public GameObject highlight;
 
-    Vector2 destination;
+    protected Vector2 destination;
     Vector2 movement;
-    float speed = 3;
+    protected float speed = 3;
 
     void Start()
     {
@@ -58,12 +58,13 @@ public class Villager : MonoBehaviour
         if (movement.magnitude < 0.1)
         {
             movement = Vector2.zero;
+            speed = 3;
         }
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //left click: move to the click location
         if (Input.GetMouseButtonDown(0) && isSelected && !clickingOnSelf)
@@ -80,8 +81,13 @@ public class Villager : MonoBehaviour
         }
     }
 
-    void Attack()
+    protected virtual void Attack()
     {
         animator.SetTrigger("Attack");
+    }
+
+    public virtual ChestType CanOpen()
+    {
+        return ChestType.Villager;
     }
 }
