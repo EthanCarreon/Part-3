@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Villager : MonoBehaviour
 {
@@ -29,11 +31,11 @@ public class Villager : MonoBehaviour
         highlight.SetActive(isSelected);
     }
 
-    private void OnMouseDown()
-    {
-        CharacterControl.SetSelectedVillager(this);
-        clickingOnSelf = true;
-    }
+    //private void OnMouseDown()
+    //{
+    //    CharacterControl.SetSelectedVillager(this);
+    //    clickingOnSelf = true;
+    //}
 
     private void OnMouseUp()
     {
