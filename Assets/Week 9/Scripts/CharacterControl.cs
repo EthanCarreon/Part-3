@@ -11,6 +11,11 @@ public class CharacterControl : MonoBehaviour
 
     public TMP_Dropdown dropdown;
 
+    public Vector3 startSize = new Vector3(0.5f, 0.5f, 0.5f);
+    public Vector3 endSize = new Vector3(2f, 2f, 2f);
+
+    float interpolation;
+
     public GameObject[] characters;
 
     public static Villager SelectedVillager { get; private set; }
@@ -18,7 +23,7 @@ public class CharacterControl : MonoBehaviour
     {
         if (SelectedVillager != null)
         {
-            SelectedVillager.Selected(false);
+            SelectedVillager.Selected(true);
         }
         SelectedVillager = villager;
         SelectedVillager.Selected(true);
@@ -30,6 +35,12 @@ public class CharacterControl : MonoBehaviour
         dropdown.value = value;
         Debug.Log(dropdown.value);
 
+    }
+
+    public void SliderChangedValue(Single value)
+    {
+        interpolation = value;
+        SelectedVillager.transform.localScale = Vector3.Lerp(startSize, endSize, interpolation);
     }
 
     private void Update()

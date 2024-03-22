@@ -12,10 +12,14 @@ public class UIDemo : MonoBehaviour
     public Color start;
     public Color end;
 
+    public Vector3 startSize = new Vector3(0.5f, 0.5f, 0.5f);
+    public Vector3 endSize = new Vector3(2f, 2f, 2f);
+
     float interpolation;
     public void SliderHasChangedValue(Single value)
     {
         interpolation = value;
+        sr.transform.localScale = Vector3.Lerp(startSize, endSize, interpolation);
     }
 
     public void DropdownHasChangedValue(int value)
@@ -25,6 +29,6 @@ public class UIDemo : MonoBehaviour
 
     private void Update()
     {
-        sr.color = Color.Lerp(start, end, (interpolation/60));
+        
     }
 }
