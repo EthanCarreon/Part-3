@@ -9,14 +9,17 @@ public class EnemyMed : Enemy
 
     public override void TakeDamage(int damage)
     {
+        
         base.TakeDamage(damage);
-        StartCoroutine(MedDamageAnim(1));
 
         health = medHealth;
+
+        StartCoroutine(MedDamageAnim(1));   
 
         if (medHealth <= 0)
         {
             SpawnDie();
+            DestroyDie();
         }
     }
 

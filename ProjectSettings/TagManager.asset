@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Weapon
+  - Gold Lock
+  - Med Key
+  - Boss Key
+  - Boss Lock
   layers:
   - Default
   - TransparentFX
